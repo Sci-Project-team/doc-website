@@ -3,18 +3,23 @@
 import { Button } from '../ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Badge } from '../ui/badge'
-import { 
-  Github, 
-  MessageSquare, 
-  Users, 
-  Heart, 
-  Star, 
+import image1 from '../../../../public/image1.png'
+import image2 from '../../../../public/image2.png'
+import image3 from '../../../../public/image3.png'
+import image4 from '../../../../public/image4.png'
+import Image from 'next/image'
+import {
+  Github,
+  MessageSquare,
+  Users,
+  Heart,
+  Star,
   GitFork,
   ExternalLink,
   Calendar,
   MapPin,
   Trophy,
-  Code
+  Code,
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -24,22 +29,22 @@ const communityResources = [
     description: 'Contribute to the codebase, report issues, and collaborate with other developers',
     icon: Github,
     href: 'https://github.com/esping/esping',
-    stats: '2.3k stars'
+    stats: '2.3k stars',
   },
   {
     title: 'Discord Community',
     description: 'Join our Discord server for real-time discussions and community support',
     icon: MessageSquare,
     href: 'https://discord.gg/esping',
-    stats: '1.2k members'
+    stats: '1.2k members',
   },
   {
     title: 'Forum',
     description: 'Ask questions, share projects, and get help from the community',
     icon: Users,
     href: '/forum',
-    stats: '500+ topics'
-  }
+    stats: '500+ topics',
+  },
 ]
 
 const contributors = [
@@ -47,53 +52,55 @@ const contributors = [
     name: 'Alex Chen',
     role: 'Core Maintainer',
     avatar: '👨‍💻',
-    contributions: 'ESP32 firmware, API design'
+    contributions: 'ESP32 firmware, API design',
   },
   {
     name: 'Sarah Johnson',
     role: 'Documentation Lead',
     avatar: '👩‍📚',
-    contributions: 'Documentation, tutorials'
+    contributions: 'Documentation, tutorials',
   },
   {
     name: 'Mike Rodriguez',
     role: 'Hardware Expert',
     avatar: '🔧',
-    contributions: 'Hardware guides, testing'
+    contributions: 'Hardware guides, testing',
   },
   {
     name: 'Emma Wilson',
     role: 'Community Manager',
     avatar: '🌟',
-    contributions: 'Community support, events'
-  }
+    contributions: 'Community support, events',
+  },
 ]
+
+const contributorImages = [image1, image2, image3, image4]
 
 const contributionWays = [
   {
     title: 'Code Contributions',
     description: 'Help improve the firmware, web interface, or documentation',
     icon: Code,
-    difficulty: 'Advanced'
+    difficulty: 'Advanced',
   },
   {
     title: 'Documentation',
     description: 'Write tutorials, improve existing docs, or translate content',
     icon: MessageSquare,
-    difficulty: 'Beginner'
+    difficulty: 'Beginner',
   },
   {
     title: 'Testing & Feedback',
     description: 'Test new features, report bugs, and provide user feedback',
     icon: Trophy,
-    difficulty: 'Beginner'
+    difficulty: 'Beginner',
   },
   {
     title: 'Community Support',
     description: 'Help other users in forums, Discord, or GitHub discussions',
     icon: Heart,
-    difficulty: 'Intermediate'
-  }
+    difficulty: 'Intermediate',
+  },
 ]
 
 const upcomingEvents = [
@@ -101,20 +108,20 @@ const upcomingEvents = [
     title: 'ESPing Hackathon 2025',
     date: 'March 15-17, 2025',
     location: 'Virtual Event',
-    description: 'Build innovative SMS-powered IoT projects and win prizes'
+    description: 'Build innovative SMS-powered IoT projects and win prizes',
   },
   {
     title: 'Community Meetup',
     date: 'February 28, 2025',
     location: 'San Francisco, CA',
-    description: 'Monthly meetup for ESPing developers and enthusiasts'
+    description: 'Monthly meetup for ESPing developers and enthusiasts',
   },
   {
     title: 'Workshop: Advanced ESP32',
     date: 'March 5, 2025',
     location: 'Online',
-    description: 'Deep dive into ESP32 programming and SMS integration'
-  }
+    description: 'Deep dive into ESP32 programming and SMS integration',
+  },
 ]
 
 export function Community() {
@@ -128,11 +135,10 @@ export function Community() {
             Community
           </Badge>
           <h2 className="text-4xl font-bold mb-6">
-            Join the{' '}
-            <span className="gradient-text">ESPing Community</span>
+            Join the <span className="gradient-text">ESPing Community</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Join our growing community of developers, makers, and IoT enthusiasts who are building 
+            Join our growing community of developers, makers, and IoT enthusiasts who are building
             the future of SMS communication together.
           </p>
         </div>
@@ -173,9 +179,17 @@ export function Community() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contributors.map((contributor, index) => (
               <Card key={index} className="p-6 text-center hover-lift transition-all duration-300">
-                <div className="text-4xl mb-4">{contributor.avatar}</div>
+                <Image
+                  src={contributorImages[index] || '/default-avatar.png'}
+                  alt={contributor.name}
+                  width={64}
+                  height={64}
+                  className="rounded-full mb-4 object-cover mx-auto"
+                />
                 <h4 className="font-semibold mb-1">{contributor.name}</h4>
-                <Badge variant="outline" className="mb-3">{contributor.role}</Badge>
+                <Badge variant="outline" className="mb-3">
+                  {contributor.role}
+                </Badge>
                 <p className="text-sm text-muted-foreground">{contributor.contributions}</p>
               </Card>
             ))}
@@ -191,7 +205,15 @@ export function Community() {
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
                     <way.icon className="w-8 h-8 text-primary" />
-                    <Badge variant={way.difficulty === 'Beginner' ? 'secondary' : way.difficulty === 'Intermediate' ? 'default' : 'destructive'}>
+                    <Badge
+                      variant={
+                        way.difficulty === 'Beginner'
+                          ? 'secondary'
+                          : way.difficulty === 'Intermediate'
+                          ? 'default'
+                          : 'destructive'
+                      }
+                    >
                       {way.difficulty}
                     </Badge>
                   </div>
@@ -242,7 +264,8 @@ export function Community() {
             <Users className="w-12 h-12 text-primary mx-auto mb-4" />
             <h3 className="text-2xl font-bold mb-4">Ready to Join?</h3>
             <p className="text-muted-foreground mb-6">
-              Whether you're a seasoned developer or just getting started, there's a place for you in the ESPing community.
+              Whether you're a seasoned developer or just getting started, there's a place for you
+              in the ESPing community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

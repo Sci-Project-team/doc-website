@@ -77,7 +77,7 @@ export function Hero() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="circuit">
                 <Play className="mr-2 h-4 w-4" />
                 Watch Demo
               </Button>

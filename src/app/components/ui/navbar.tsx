@@ -120,7 +120,7 @@ export function Navbar() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="sm" asChild>
+            <Button variant="circuit" size="sm" asChild>
               <Link href="https://github.com/esping/esping" target="_blank" rel="noopener noreferrer">
                 <Github className="w-4 h-4 mr-2" />
                 GitHub
