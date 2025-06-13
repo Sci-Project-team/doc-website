@@ -1,7 +1,18 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    // Remove appDir: true - it's no longer needed
+  },
+  images: {
+    domains: ['localhost'],
+    formats: ['image/webp', 'image/avif'],
+  },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+module.exports = nextConfig
