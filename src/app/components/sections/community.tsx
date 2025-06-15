@@ -3,10 +3,12 @@
 import { Button } from '../ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Badge } from '../ui/badge'
-import image1 from '../../../../public/image1.png'
-import image2 from '../../../../public/image2.png'
-import image3 from '../../../../public/image3.png'
-import image4 from '../../../../public/image4.png'
+import image1 from '../../../../public/image1.jpg'
+import image2 from '../../../../public/image2.jpg'
+import image3 from '../../../../public/image3.jpg'
+import image4 from '../../../../public/image4.jpg'
+import image5 from '../../../../public/image5.jpg'
+import image6 from '../../../../public/image6.jpg'
 import Image from 'next/image'
 import {
   Github,
@@ -49,32 +51,33 @@ const communityResources = [
 
 const contributors = [
   {
-    name: 'Alex Chen',
-    role: 'Core Maintainer',
-    avatar: '👨‍💻',
-    contributions: 'ESP32 firmware, API design',
+    name: 'Djabri Maroua',
+    role: 'Project Manager',
   },
   {
-    name: 'Sarah Johnson',
+    name: 'Dinari Yasmine',
+    role: 'Frontend Developer',
+  },
+  {
+    name: 'Bouyahiyaoui Meriem',
+    role: 'Backend Developer',
+  },
+  {
+    name: 'Rezzoug Aicha',
+    role: 'Hardware Specialist',
+  },
+  {
+    name: 'Messikh Wissal',
     role: 'Documentation Lead',
-    avatar: '👩‍📚',
-    contributions: 'Documentation, tutorials',
   },
   {
-    name: 'Mike Rodriguez',
-    role: 'Hardware Expert',
-    avatar: '🔧',
-    contributions: 'Hardware guides, testing',
+    name: 'Amirat Thanina',
+    role: 'Project Manager',
   },
-  {
-    name: 'Emma Wilson',
-    role: 'Community Manager',
-    avatar: '🌟',
-    contributions: 'Community support, events',
-  },
+
 ]
 
-const contributorImages = [image1, image2, image3, image4]
+const contributorImages = [image1, image2, image3, image4, image5, image6]
 
 const contributionWays = [
   {
@@ -173,28 +176,38 @@ export function Community() {
         {/* Contributors */}
         <div className="mb-20">
           <h3 className="text-2xl font-bold mb-8 text-center">Meet the Team</h3>
-          <p className="text-center text-muted-foreground mb-8">
+          <p className="text-center text-muted-foreground mb-12">
             Talented individuals from around the world who make ESPing better every day
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {contributors.map((contributor, index) => (
-              <Card key={index} className="p-6 text-center hover-lift transition-all duration-300">
-                <Image
-                  src={contributorImages[index] || '/default-avatar.png'}
-                  alt={contributor.name}
-                  width={64}
-                  height={64}
-                  className="rounded-full mb-4 object-cover mx-auto"
-                />
-                <h4 className="font-semibold mb-1">{contributor.name}</h4>
-                <Badge variant="outline" className="mb-3">
-                  {contributor.role}
-                </Badge>
-                <p className="text-sm text-muted-foreground">{contributor.contributions}</p>
+              <Card key={index} className="p-6 text-center hover-lift transition-all duration-300 group hover:shadow-lg hover:border-primary/30">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 mx-auto rounded-full overflow-hidden ring-4 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300">
+                    <Image
+                      src={contributorImages[index] || '/default-avatar.png'}
+                      alt={contributor.name}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
+                    {contributor.name}
+                  </h4>
+                  <Badge variant="outline" className="group-hover:border-primary/50 transition-colors">
+                    {contributor.role}
+                  </Badge>
+                  
+                </div>
               </Card>
             ))}
           </div>
         </div>
+
 
         {/* How to Contribute */}
         <div className="mb-20">
