@@ -10,7 +10,6 @@ import {
   ExternalLink, 
   Copy, 
   Play,
-  CheckCircle,
   Globe,
   Zap
 } from 'lucide-react'
@@ -72,7 +71,7 @@ const quickLinks = [
   }
 ]
 
-const generateCodeExample = (language: string, endpoint: string) => {
+const generateCodeExample = (language: string) => {
   const examples = {
     javascript: `fetch('http://esp32-ip/api/sms', {
   method: 'POST',
@@ -190,7 +189,7 @@ export function ApiDocs() {
               <div className="relative">
                 <div className="code-block">
                   <pre className="text-sm overflow-x-auto">
-                    {generateCodeExample(activeLanguage, '')}
+                    {generateCodeExample(activeLanguage)}
                   </pre>
                 </div>
                 <Button 

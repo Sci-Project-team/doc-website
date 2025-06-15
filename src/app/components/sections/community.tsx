@@ -174,40 +174,31 @@ export function Community() {
         </div>
 
         {/* Contributors */}
-        <div className="mb-20">
-          <h3 className="text-2xl font-bold mb-8 text-center">Meet the Team</h3>
-          <p className="text-center text-muted-foreground mb-12">
-            Talented individuals from around the world who make ESPing better every day
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {contributors.map((contributor, index) => (
-              <Card key={index} className="p-6 text-center hover-lift transition-all duration-300 group hover:shadow-lg hover:border-primary/30">
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 mx-auto rounded-full overflow-hidden ring-4 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300">
-                    <Image
-                      src={contributorImages[index] || '/default-avatar.png'}
-                      alt={contributor.name}
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                  </div>
-                
-                </div>
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
-                    {contributor.name}
-                  </h4>
-                  <Badge variant="outline" className="group-hover:border-primary/50 transition-colors">
-                    {contributor.role}
-                  </Badge>
-                  
-                </div>
-              </Card>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+  {contributors.map((contributor, index) => (
+    <Card key={index} className="p-6 text-center hover-lift transition-all duration-300 group hover:shadow-lg hover:border-primary/30">
+      <div className="relative mb-6">
+        <div className="w-20 h-20 mx-auto rounded-full overflow-hidden ring-4 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300">
+          <Image
+            src={contributorImages[index] || '/default-avatar.png'}
+            alt={contributor.name}
+            width={80}
+            height={80}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+          />
         </div>
-
+      </div>
+      <div className="space-y-3">
+        <h4 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
+          {contributor.name}
+        </h4>
+        <Badge variant="outline" className="group-hover:border-primary/50 transition-colors">
+          {contributor.role}
+        </Badge>
+      </div>
+    </Card>
+  ))}
+</div>
 
         {/* How to Contribute */}
         <div className="mb-20">

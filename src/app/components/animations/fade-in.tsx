@@ -181,7 +181,6 @@ interface PulseGlowProps {
 
 export function PulseGlow({ 
   children, 
-  color = 'primary-500',
   className 
 }: PulseGlowProps) {
   return (

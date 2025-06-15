@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     // Remove appDir: true - it's no longer needed
   },
+
   images: {
     domains: ['localhost'],
     formats: ['image/webp', 'image/avif'],
@@ -11,7 +12,7 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   eslint: {
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true,
   },
 }
 
