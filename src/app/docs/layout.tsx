@@ -1,148 +1,134 @@
-import { ReactNode } from 'react'
-import Link from 'next/link'
-import { 
-  BookOpen, 
-  Zap, 
-  Cpu, 
-  Code, 
-  MessageSquare, 
-  Settings,
-  ChevronRight,
-  Home
-} from 'lucide-react'
-import { Button } from '../components/ui/button'
-import { Card } from '../components/ui/card'
+'use client'
 
-const sidebarNavigation = [
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { cn } from '../../lib/utils'
+import { 
+  Book, 
+  Code, 
+  Puzzle, 
+  Smartphone, 
+  Zap,
+  FileText,
+  Settings,
+  ChevronRight
+} from 'lucide-react'
+
+const navigation = [
   {
     title: 'Getting Started',
-    items: [
-      { title: 'Introduction', href: '/docs' },
-      { title: 'Quick Start', href: '/docs/getting-started' },
-      { title: 'Hardware Setup', href: '/docs/hardware' },
-      { title: 'First SMS', href: '/docs/first-sms' },
-    ]
+    href: '/docs/getting-started',
+    icon: Book,
+    description: 'Quick setup guide'
   },
   {
-    title: 'API Reference',
-    items: [
-      { title: 'Overview', href: '/docs/api-reference' },
-      { title: 'Authentication', href: '/docs/api-reference/auth' },
-      { title: 'Send SMS', href: '/docs/api-reference/send' },
-      { title: 'Receive SMS', href: '/docs/api-reference/receive' },
-      { title: 'System Status', href: '/docs/api-reference/status' },
-    ]
+    title: 'API Reference', 
+    href: '/docs/api-reference',
+    icon: Code,
+    description: 'Complete API documentation'
   },
   {
-    title: 'Examples',
-    items: [
-      { title: 'Basic Examples', href: '/docs/examples' },
-      { title: 'Home Automation', href: '/docs/examples/home-automation' },
-      { title: 'IoT Alerts', href: '/docs/examples/iot-alerts' },
-      { title: 'Security System', href: '/docs/examples/security' },
-    ]
+    title: 'SDK Documentation',
+    href: '/docs/sdk', 
+    icon: FileText,
+    description: 'Python & JavaScript SDKs'
   },
   {
-    title: 'Advanced',
-    items: [
-      { title: 'Configuration', href: '/docs/configuration' },
-      { title: 'Webhooks', href: '/docs/webhooks' },
-      { title: 'Custom Firmware', href: '/docs/custom-firmware' },
-      { title: 'Troubleshooting', href: '/docs/troubleshooting' },
-    ]
+    title: 'Integrations',
+    href: '/docs/integrations',
+    icon: Puzzle,
+    description: 'Third-party integrations'
+  },
+  {
+    title: 'Mobile App',
+    href: '/docs/mobile-app',
+    icon: Smartphone,
+    description: 'ESPing mobile application'
+  },
+  {
+    title: 'Hardware Setup',
+    href: '/docs/hardware',
+    icon: Settings,
+    description: 'Hardware configuration & pricing'
   }
 ]
 
-interface DocsLayoutProps {
-  children: ReactNode
-}
+export default function DocsLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const pathname = usePathname()
 
-export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
-    <div className="min-h-screen">
-      {/* Top breadcrumb */}
-      <div className="border-b border-border/40">
-        <div className="container py-4">
-          <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-primary transition-colors">
-              <Home className="h-4 w-4" />
-            </Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link href="/docs" className="hover:text-primary transition-colors">
-              Documentation
-            </Link>
-          </nav>
-        </div>
-      </div>
-
-      <div className="container py-8">
-        <div className="grid gap-8 lg:grid-cols-4">
-          {/* Sidebar */}
-          <aside className="lg:col-span-1">
-            <div className="sticky top-20 space-y-6">
-              {/* Search */}
-              <Card className="p-4">
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="search"
-                    placeholder="Search docs..."
-                    className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-                  />
-                  <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-                    ⌘K
-                  </kbd>
-                </div>
-              </Card>
-
-              {/* Navigation */}
-              <nav className="space-y-6">
-                {sidebarNavigation.map((section) => (
-                  <div key={section.title}>
-                    <h4 className="font-semibold text-sm mb-3">{section.title}</h4>
-                    <ul className="space-y-2">
-                      {section.items.map((item) => (
-                        <li key={item.href}>
-                          <Link
-                            href={item.href}
-                            className="block text-sm text-muted-foreground hover:text-primary transition-colors py-1"
-                          >
-                            {item.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </nav>
-
-              {/* Help Card */}
-              <Card className="p-4">
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <MessageSquare className="h-4 w-4 text-primary" />
-                    <h4 className="font-semibold text-sm">Need Help?</h4>
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                    Join our community for support and discussions.
-                  </p>
-                  <Button variant="outline" size="sm" asChild className="w-full">
-                    <Link href="/community">
-                      Get Support
-                    </Link>
-                  </Button>
-                </div>
-              </Card>
+    <div className="flex min-h-screen bg-background">
+      {/* Sidebar */}
+      <aside className="w-72 border-r bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="p-6">
+            {/* Header */}
+            <div className="mb-6">
+              <h2 className="text-lg font-semibold text-foreground mb-2">Documentation</h2>
+              <p className="text-sm text-muted-foreground">
+                Everything you need to build with ESPing SMS Gateway
+              </p>
             </div>
-          </aside>
 
-          {/* Main content */}
-          <main className="lg:col-span-3">
-            <div className="max-w-4xl">
-              {children}
-            </div>
-          </main>
+            {/* Navigation */}
+            <nav className="space-y-1">
+              {navigation.map((item) => {
+                const Icon = item.icon
+                const isActive = pathname === item.href
+                
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      'group flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-all duration-200 hover:bg-muted/50',
+                      isActive
+                        ? 'bg-primary/10 text-primary border-l-2 border-primary shadow-sm'
+                        : 'text-muted-foreground hover:text-foreground'
+                    )}
+                  >
+                    <div className={cn(
+                      'flex h-8 w-8 items-center justify-center rounded-md transition-colors',
+                      isActive 
+                        ? 'bg-primary/20 text-primary' 
+                        : 'bg-muted/50 text-muted-foreground group-hover:bg-muted group-hover:text-foreground'
+                    )}>
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    
+                    <div className="flex-1 min-w-0">
+                      <div className="font-medium">{item.title}</div>
+                      <div className={cn(
+                        'text-xs transition-colors',
+                        isActive ? 'text-primary/70' : 'text-muted-foreground'
+                      )}>
+                        {item.description}
+                      </div>
+                    </div>
+                    
+                    {isActive && (
+                      <ChevronRight className="h-3 w-3 text-primary" />
+                    )}
+                  </Link>
+                )
+              })}
+            </nav>
+
+          
+          </div>
         </div>
-      </div>
+      </aside>
+      
+      {/* Main Content */}
+      <main className="flex-1 overflow-auto">
+        <div className="container max-w-4xl mx-auto p-8">
+          {children}
+        </div>
+      </main>
     </div>
   )
 }

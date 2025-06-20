@@ -15,69 +15,96 @@ import {
   Cpu,
   Cloud,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Database,
+  Clock,
+  BarChart3,
+  Webhook
 } from 'lucide-react'
 import Link from 'next/link'
 
 const features = [
   {
     icon: Cpu,
-    title: 'ESP32 Integration',
-    description: 'Native support for ESP32 microcontrollers with optimized firmware and easy setup process.',
-    benefits: ['Low power consumption', 'WiFi connectivity', 'Real-time processing']
+    title: 'ESP32-S3 Integration',
+    description: 'Optimized firmware for ESP32-S3 with dual-core processing, 8MB PSRAM, and advanced power management.',
+    benefits: ['Dual-core 240MHz CPU', 'Low power consumption', 'Real-time processing', 'OTA updates']
   },
   {
     icon: MessageSquare,
-    title: 'REST API',
-    description: 'Clean, well-documented REST API for sending, receiving, and managing SMS messages.',
-    benefits: ['Standard HTTP methods', 'JSON responses', 'Rate limiting']
+    title: 'Advanced SMS Engine',
+    description: 'Robust SMS processing with queue management, delivery tracking, and multi-format support.',
+    benefits: ['Bulk messaging (up to 1000)', 'Delivery receipts', 'Message scheduling', 'Unicode support']
   },
   {
     icon: Shield,
-    title: 'Secure Authentication',
-    description: 'Multiple authentication methods including API keys, tokens, and PIN codes.',
-    benefits: ['API key management', 'Token-based auth', 'Secure endpoints']
+    title: 'Enterprise Security',
+    description: 'Multi-layer security with API authentication, rate limiting, and encrypted communications.',
+    benefits: ['JWT token auth', 'API rate limiting', 'TLS encryption', 'Access control']
+  },
+  {
+    icon: Database,
+    title: 'Local Data Storage',
+    description: 'Built-in SQLite database for message persistence, logging, and offline capability.',
+    benefits: ['Message persistence', 'Delivery tracking', 'Offline queuing', 'Data analytics']
+  },
+  {
+    icon: Radio,
+    title: 'Multi-Network Support',
+    description: 'Compatible with 2G/3G/4G networks worldwide with automatic failover and optimization.',
+    benefits: ['Auto APN detection', 'Network failover', 'Signal monitoring', 'Carrier optimization']
   },
   {
     icon: Globe,
-    title: 'Web Interface',
-    description: 'Intuitive web dashboard for monitoring, configuration, and message management.',
-    benefits: ['Real-time updates', 'Message logs', 'System monitoring']
+    title: 'Web Management Portal',
+    description: 'Comprehensive web interface for monitoring, configuration, and real-time analytics.',
+    benefits: ['Real-time dashboard', 'Message analytics', 'System monitoring', 'Remote configuration']
   },
   {
     icon: Code,
-    title: 'Developer Tools',
-    description: 'SDKs, libraries, and plugins for popular platforms and programming languages.',
-    benefits: ['Python SDK', 'JavaScript library', 'WordPress plugin']
+    title: 'Developer Ecosystem',
+    description: 'Complete SDK suite with libraries for Python, JavaScript, PHP, and integration plugins.',
+    benefits: ['Python SDK', 'JavaScript library', 'WordPress, Node-red, Zapier plugin', 'REST API docs']
   },
   {
-    icon: Settings,
-    title: 'Easy Configuration',
-    description: 'Simple setup process with automatic network detection and GSM module configuration.',
-    benefits: ['Auto-detection', 'Web-based setup', 'Backup & restore']
+    icon: Webhook,
+    title: 'Webhook Integration',
+    description: 'Real-time event notifications with configurable webhook endpoints and retry logic.',
+    benefits: ['Delivery notifications', 'System events', 'Custom triggers', 'Retry mechanism']
   }
+]
+
+const performanceMetrics = [
+  { metric: 'Message Throughput', value: '100 SMS/min', icon: BarChart3 },
+  { metric: 'API Response Time', value: '<200ms', icon: Clock },
+  { metric: 'Memory Usage', value: '~2MB RAM', icon: Cpu },
+  { metric: 'Power Consumption', value: '150mA avg', icon: Zap }
 ]
 
 const useCases = [
   {
-    title: 'IoT Notifications',
-    description: 'Send alerts and status updates from your IoT devices directly to mobile phones.',
-    icon: Radio
+    title: 'Industrial IoT Monitoring',
+    description: 'Monitor equipment status, send maintenance alerts, and track operational metrics via SMS.',
+    icon: Radio,
+    examples: ['Temperature alerts', 'Equipment failures', 'Maintenance schedules']
   },
   {
-    title: 'Home Automation',
+    title: 'Smart Home Automation',
     description: 'Integrate SMS notifications into your smart home system for security and monitoring.',
-    icon: Settings
+    icon: Settings,
+    examples: ['Security alerts', 'Door/window sensors', 'Environmental monitoring']
   },
   {
-    title: 'Industrial Monitoring',
-    description: 'Monitor equipment status and send maintenance alerts via SMS.',
-    icon: Zap
+    title: 'Emergency Notification Systems',
+    description: 'Reliable SMS communication for critical emergency and disaster notification systems.',
+    icon: Shield,
+    examples: ['Emergency broadcasts', 'Evacuation notices', 'Safety alerts']
   },
   {
-    title: 'Emergency Systems',
-    description: 'Reliable SMS communication for emergency notification systems.',
-    icon: Shield
+    title: 'Business Process Automation',
+    description: 'Automate business workflows with SMS notifications for orders, appointments, and updates.',
+    icon: Zap,
+    examples: ['Order confirmations', 'Appointment reminders', 'Status updates']
   }
 ]
 
@@ -88,16 +115,27 @@ export function Features() {
         {/* Header */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            Features
+            Enterprise Features
           </Badge>
           <h2 className="text-4xl font-bold mb-6">
-            Everything You Need for{' '}
-            <span className="gradient-text">SMS Integration</span>
+            Production-Ready{' '}
+            <span className="gradient-text">SMS Infrastructure</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            ESPing provides a complete solution for integrating SMS functionality into your IoT projects 
-            with minimal effort and maximum reliability.
+            ESPing provides enterprise-grade SMS gateway functionality with advanced features 
+            for reliability, scalability, and seamless integration into your existing infrastructure.
           </p>
+        </div>
+
+        {/* Performance Metrics */}
+        <div className="grid md:grid-cols-4 gap-6 mb-16">
+          {performanceMetrics.map((metric, index) => (
+            <Card key={index} className="p-6 text-center glass border-primary/10">
+              <metric.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+              <div className="text-2xl font-bold text-primary mb-1">{metric.value}</div>
+              <div className="text-sm text-muted-foreground">{metric.metric}</div>
+            </Card>
+          ))}
         </div>
 
         {/* Features Grid */}
@@ -130,80 +168,53 @@ export function Features() {
         {/* Use Cases */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4">Perfect for Any Project</h3>
+            <h3 className="text-3xl font-bold mb-4">Real-World Applications</h3>
             <p className="text-lg text-muted-foreground">
-              See how ESPing can transform your projects with reliable SMS communication
+              See how ESPing transforms critical communication across industries
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             {useCases.map((useCase, index) => (
-              <Card key={index} className="p-6 text-center hover-lift glass border-primary/10 hover:border-primary/30 transition-all duration-300">
-                <useCase.icon className="w-10 h-10 text-primary mx-auto mb-4" />
-                <h4 className="font-semibold mb-2">{useCase.title}</h4>
-                <p className="text-sm text-muted-foreground">{useCase.description}</p>
+              <Card key={index} className="p-6 hover-lift glass border-primary/10 hover:border-primary/30 transition-all duration-300">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <useCase.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-lg mb-2">{useCase.title}</h4>
+                    <p className="text-muted-foreground mb-4">{useCase.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {useCase.examples.map((example, exampleIndex) => (
+                        <Badge key={exampleIndex} variant="secondary" className="text-xs">
+                          {example}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </Card>
             ))}
           </div>
         </div>
 
-        {/* Code Example */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4">Simple Integration</h3>
-            <p className="text-lg text-muted-foreground">
-              Get started with just a few lines of code. Our API is designed to be intuitive and easy to integrate into any project.
-            </p>
-          </div>
-          
-          <Card className="max-w-4xl mx-auto">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Code className="w-5 h-5 mr-2" />
-                Quick Start Example
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="code-block">
-                <pre className="text-sm">
-{`// Send SMS with ESPing
-const response = await fetch('http://esp32-ip/api/sms', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer your-api-key'
-  },
-  body: JSON.stringify({
-    to: '+1234567890',
-    message: 'Hello from ESPing!'
-  })
-});
-
-const result = await response.json();
-console.log('SMS sent:', result.status);`}
-                </pre>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
         {/* CTA */}
         <div className="text-center">
           <Card className="max-w-2xl mx-auto p-8 glass border-primary/20">
-            <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
+            <h3 className="text-2xl font-bold mb-4">Ready for Production?</h3>
             <p className="text-muted-foreground mb-6">
-              Join thousands of developers who are already using ESPing to power their IoT projects.
+              Join thousands of developers and businesses who trust ESPing for their critical SMS infrastructure.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
                 <Link href="/docs/getting-started">
-                  Get Started
+                  Deploy Now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="/docs/api-reference">
-                  View API Docs
+                  View Documentation
                 </Link>
               </Button>
             </div>

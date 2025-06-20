@@ -34,12 +34,6 @@ const endpoints = [
       { name: 'limit', type: 'number', description: 'Number of messages to return' },
       { name: 'offset', type: 'number', description: 'Pagination offset' }
     ]
-  },
-  {
-    method: 'GET',
-    endpoint: '/api/status',
-    description: 'Get current system status and statistics',
-    parameters: []
   }
 ]
 
@@ -162,47 +156,7 @@ export function ApiDocs() {
           </div>
         </div>
 
-        {/* Code Examples */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center">Code Examples</h3>
-          <p className="text-center text-muted-foreground mb-8">
-            See how easy it is to integrate ESPing into your project
-          </p>
-          
-          <Card className="max-w-4xl mx-auto">
-            <CardHeader>
-              <div className="flex flex-wrap gap-2">
-                {languages.map((lang) => (
-                  <Button
-                    key={lang.id}
-                    variant={activeLanguage === lang.id ? 'default' : 'outline'}
-                    size="sm"
-                    onClick={() => setActiveLanguage(lang.id)}
-                  >
-                    <span className="mr-2">{lang.icon}</span>
-                    {lang.name}
-                  </Button>
-                ))}
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="relative">
-                <div className="code-block">
-                  <pre className="text-sm overflow-x-auto">
-                    {generateCodeExample(activeLanguage)}
-                  </pre>
-                </div>
-                <Button 
-                  size="sm" 
-                  variant="ghost" 
-                  className="absolute top-2 right-2"
-                >
-                  <Copy className="w-4 h-4" />
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+       
 
         {/* Quick Links */}
         <div className="mb-16">

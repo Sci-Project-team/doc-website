@@ -200,70 +200,11 @@ export function Community() {
   ))}
 </div>
 
-        {/* How to Contribute */}
-        <div className="mb-20">
-          <h3 className="text-2xl font-bold mb-8 text-center">How to Contribute</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            {contributionWays.map((way, index) => (
-              <Card key={index} className="p-6 hover-lift transition-all duration-300">
-                <CardHeader className="pb-4">
-                  <div className="flex items-center justify-between">
-                    <way.icon className="w-8 h-8 text-primary" />
-                    <Badge
-                      variant={
-                        way.difficulty === 'Beginner'
-                          ? 'secondary'
-                          : way.difficulty === 'Intermediate'
-                          ? 'default'
-                          : 'destructive'
-                      }
-                    >
-                      {way.difficulty}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-lg">{way.title}</CardTitle>
-                  <CardDescription>{way.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
+        
 
-        {/* Upcoming Events */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center">Upcoming Events</h3>
-          <p className="text-center text-muted-foreground mb-8">
-            Join our community events and stay connected with fellow developers
-          </p>
-          <div className="space-y-6 max-w-4xl mx-auto">
-            {upcomingEvents.map((event, index) => (
-              <Card key={index} className="p-6 hover-lift transition-all duration-300">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div className="mb-4 md:mb-0">
-                    <h4 className="text-lg font-semibold mb-2">{event.title}</h4>
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-2">
-                      <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {event.date}
-                      </div>
-                      <div className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-1" />
-                        {event.location}
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground">{event.description}</p>
-                  </div>
-                  <Button variant="outline" size="sm">
-                    Learn More
-                  </Button>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-
+        
         {/* CTA */}
-        <div className="text-center">
+        <div className="text-center mt-20">
           <Card className="max-w-2xl mx-auto p-8 glass border-primary/20">
             <Users className="w-12 h-12 text-primary mx-auto mb-4" />
             <h3 className="text-2xl font-bold mb-4">Ready to Join?</h3>

@@ -166,7 +166,7 @@ export default function GettingStartedPage() {
     <div className="space-y-12">
       {/* Header */}
       <div className="space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground">
           Getting Started with ESPing
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl">
@@ -177,8 +177,8 @@ export default function GettingStartedPage() {
 
       {/* Prerequisites */}
       <section>
-        <h2 className="text-2xl font-bold mb-6 flex items-center">
-          <Settings className="mr-2 h-6 w-6 text-primary" />
+        <h2 className="text-2xl font-bold mb-6 flex items-center text-foreground">
+          <Settings className="mr-2 h-6 w-6 text-primary " />
           Prerequisites
         </h2>
         
@@ -218,76 +218,11 @@ export default function GettingStartedPage() {
         </Card>
       </section>
 
-      {/* Step-by-step Guide */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6 flex items-center">
-          <Zap className="mr-2 h-6 w-6 text-primary" />
-          Quick Setup Guide
-        </h2>
-        
-        <div className="space-y-8">
-          {steps.map((step, index) => (
-            <Card key={step.number} variant="glow" className="overflow-hidden">
-              <CardHeader className="pb-4">
-                <div className="flex items-center space-x-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                    {step.number}
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="flex items-center">
-                      <step.icon className="mr-2 h-5 w-5" />
-                      {step.title}
-                    </CardTitle>
-                    <CardDescription>{step.description}</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                {step.content}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
 
-      {/* Next Steps */}
-      <section>
-        <Card className="p-8 text-center">
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-bold mb-4">🎉 Congratulations!</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Your ESPing SMS gateway is now ready to use. Here's what you can do next:
-              </p>
-            </div>
-            
-            <div className="grid gap-4 md:grid-cols-3">
-              <Button variant="glow" asChild>
-                <Link href="/docs/first-sms">
-                  <Smartphone className="mr-2 h-4 w-4" />
-                  Send First SMS
-                </Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/docs/api-reference">
-                  Explore API
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/docs/examples">
-                  View Examples
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </Card>
-      </section>
 
       {/* Troubleshooting */}
       <section>
-        <h2 className="text-2xl font-bold mb-6">Having Issues?</h2>
+        <h2 className="text-2xl font-bold mb-6 text-foreground">Having Issues?</h2>
         <div className="grid gap-4">
           <Card className="p-6">
             <h3 className="font-semibold mb-2">🔧 Common Problems</h3>
@@ -299,18 +234,7 @@ export default function GettingStartedPage() {
             </ul>
           </Card>
           
-          <div className="flex space-x-4">
-            <Button variant="outline" asChild>
-              <Link href="/docs/troubleshooting">
-                Full Troubleshooting Guide
-              </Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/community">
-                Get Community Help
-              </Link>
-            </Button>
-          </div>
+          
         </div>
       </section>
     </div>

@@ -12,92 +12,101 @@ import {
   Download,
   Settings,
   Cable,
-  Link
+  DollarSign,
+  ShoppingCart
 } from 'lucide-react'
 
 const components = [
   {
     name: 'ESP32 Development Board',
-    description: 'Main microcontroller with WiFi and Bluetooth',
+    description: 'Main microcontroller with WiFi and Bluetooth capabilities',
     required: true,
     options: ['ESP32-WROOM-32', 'ESP32-WROVER', 'ESP32-S2', 'ESP32-C3'],
-    price: '$5-15',
-    notes: 'Any ESP32 variant with at least 4MB flash memory'
+    price: '1,500 - 4,500 DZD',
+    notes: 'Any ESP32 variant with at least 4MB flash memory. WROOM-32 recommended for beginners.',
+    specifications: ['240MHz dual-core processor', '520KB SRAM', '4MB Flash', 'WiFi + Bluetooth']
   },
   {
-    name: 'GSM Module',
+    name: 'SIM800L GSM Module',
     description: 'Cellular communication module for SMS functionality',
     required: true,
     options: ['SIM800L', 'SIM900A', 'A6 Module', 'SIM7600'],
-    price: '$8-25',
-    notes: 'SIM800L is recommended for beginners'
+    price: '2,400 - 7,500 DZD',
+    notes: 'SIM800L is recommended for beginners. Supports 2G networks.',
+    specifications: ['Quad-band GSM/GPRS', 'SMS and voice calls', 'Low power consumption', 'Compact size']
   },
   {
     name: 'SIM Card',
     description: 'Active SIM card with SMS capability',
     required: true,
-    options: ['Prepaid SIM', 'IoT SIM', 'Data SIM with SMS'],
-    price: '$5-20/month',
-    notes: 'Ensure your carrier supports 2G/3G networks'
+    options: ['Mobilis Prepaid', 'Ooredoo Prepaid', 'Djezzy Prepaid'],
+    price: '500 - 2,000 DZD/month',
+    notes: 'Ensure your carrier supports 2G/3G networks. Prepaid recommended for testing.',
+    specifications: ['SMS service enabled', '2G/3G network support', 'Sufficient credit', 'Active subscription']
   },
   {
-    name: 'Power Supply',
+    name: 'Power Supply (5V 2A)',
     description: 'Stable power source for GSM module',
     required: true,
-    options: ['5V 2A Adapter', 'Li-Po Battery', 'USB Power Bank'],
-    price: '$5-15',
-    notes: 'GSM modules require high current during transmission'
+    options: ['5V 2A Adapter', 'Power Bank', 'USB Power Supply'],
+    price: '1,500 - 4,500 DZD',
+    notes: 'GSM modules require high current during transmission. Stable power is critical.',
+    specifications: ['5V output voltage', '2A minimum current', 'Stable regulation', 'Low noise']
   },
   {
-    name: 'Antenna',
-    description: 'GSM antenna for cellular signal reception',
+    name: 'GSM Antenna',
+    description: 'Antenna for cellular signal reception',
     required: true,
     options: ['Helical Antenna', 'PCB Antenna', 'External Antenna'],
-    price: '$2-10',
-    notes: 'Usually included with GSM module'
+    price: '600 - 3,000 DZD',
+    notes: 'Usually included with GSM module. External antenna improves signal quality.',
+    specifications: ['900/1800 MHz frequency', 'SMA connector', 'Omnidirectional', 'Good gain']
   },
   {
-    name: 'Jumper Wires',
-    description: 'Connecting wires for prototyping',
+    name: 'Jumper Wires & Breadboard',
+    description: 'Connecting wires and prototyping board',
     required: true,
-    options: ['Male-to-Male', 'Male-to-Female', 'Female-to-Female'],
-    price: '$3-8',
-    notes: 'Get a variety pack with different types'
+    options: ['Jumper Wire Kit', 'Breadboard Set', 'Prototyping Kit'],
+    price: '900 - 2,400 DZD',
+    notes: 'Get a variety pack with different wire types. Half-size breadboard sufficient.',
+    specifications: ['Male-to-male wires', 'Male-to-female wires', '400-point breadboard', 'Good connections']
   },
   {
-    name: 'Breadboard',
-    description: 'Solderless prototyping board',
+    name: 'OLED Display (Optional)',
+    description: 'Display for status information and debugging',
     required: false,
-    options: ['Half-size', 'Full-size', 'Mini breadboard'],
-    price: '$3-10',
-    notes: 'Alternative to direct soldering for testing'
+    options: ['0.96" OLED I2C', '1.3" OLED SPI', 'LCD 16x2'],
+    price: '1,500 - 4,500 DZD',
+    notes: 'Useful for debugging and status monitoring. I2C interface recommended.',
+    specifications: ['128x64 resolution', 'I2C interface', 'Low power', 'Clear display']
   },
   {
-    name: 'OLED Display',
-    description: 'Optional display for status information',
+    name: 'MicroSD Card (Optional)',
+    description: 'Additional storage for message logs',
     required: false,
-    options: ['0.96" OLED', '1.3" OLED', 'LCD 16x2'],
-    price: '$5-15',
-    notes: 'Useful for debugging and status monitoring'
+    options: ['8GB MicroSD', '16GB MicroSD', '32GB MicroSD'],
+    price: '900 - 1,800 DZD',
+    notes: 'For extended message history storage. Class 10 recommended.',
+    specifications: ['8GB minimum', 'Class 10 speed', 'Reliable brand', 'FAT32 format']
   }
 ]
 
 const connections = [
   {
     component: 'SIM800L',
-    esp32_pin: 'GPIO17',
+    esp32_pin: 'GPIO17 (RX2)',
     gsm_pin: 'TXD',
-    description: 'Serial communication - ESP32 RX'
+    description: 'Serial communication - ESP32 receives data from GSM'
   },
   {
     component: 'SIM800L',
-    esp32_pin: 'GPIO16',
+    esp32_pin: 'GPIO16 (TX2)',
     gsm_pin: 'RXD',
-    description: 'Serial communication - ESP32 TX'
+    description: 'Serial communication - ESP32 sends data to GSM'
   },
   {
     component: 'SIM800L',
-    esp32_pin: '5V',
+    esp32_pin: '5V (VIN)',
     gsm_pin: 'VCC',
     description: 'Power supply (3.7V-4.2V for SIM800L)'
   },
@@ -111,25 +120,52 @@ const connections = [
     component: 'SIM800L',
     esp32_pin: 'GPIO18',
     gsm_pin: 'RST',
-    description: 'Reset pin (optional)'
+    description: 'Reset pin (optional but recommended)'
   },
   {
-    component: 'OLED (Optional)',
-    esp32_pin: 'GPIO21',
+    component: 'OLED Display',
+    esp32_pin: 'GPIO21 (SDA)',
     gsm_pin: 'SDA',
-    description: 'I2C data line'
+    description: 'I2C data line for display'
   },
   {
-    component: 'OLED (Optional)',
-    esp32_pin: 'GPIO22',
+    component: 'OLED Display',
+    esp32_pin: 'GPIO22 (SCL)',
     gsm_pin: 'SCL',
-    description: 'I2C clock line'
+    description: 'I2C clock line for display'
   },
   {
-    component: 'OLED (Optional)',
+    component: 'OLED Display',
     esp32_pin: '3.3V',
     gsm_pin: 'VCC',
-    description: 'Power supply for OLED'
+    description: 'Power supply for OLED display'
+  }
+]
+
+const totalCosts = [
+  {
+    setup: 'Basic Configuration',
+    description: 'Minimum components for SMS gateway',
+    components: ['ESP32', 'SIM800L', 'SIM Card', 'Power Supply', 'Antenna', 'Cables'],
+    totalDZD: '7,500 - 22,000 DZD',
+    monthly: '500 - 2,000 DZD/month',
+    recommended: 'Ideal for prototyping and testing'
+  },
+  {
+    setup: 'Complete Configuration',
+    description: 'All components including optional ones',
+    components: ['Basic Configuration', 'OLED Display', 'MicroSD Card', 'Enclosure'],
+    totalDZD: '10,500 - 28,500 DZD',
+    monthly: '500 - 2,000 DZD/month',
+    recommended: 'Recommended for professional use'
+  },
+  {
+    setup: 'Raspberry Pi Configuration',
+    description: 'Advanced configuration with Raspberry Pi backend',
+    components: ['Complete Configuration', 'Raspberry Pi 4', 'SD Card', 'Pi Power Supply'],
+    totalDZD: '25,000 - 45,000 DZD',
+    monthly: '500 - 2,000 DZD/month',
+    recommended: 'For multi-user applications'
   }
 ]
 
@@ -139,22 +175,66 @@ export default function HardwarePage() {
       {/* Header */}
       <div className="space-y-4">
         <h1 className="text-4xl font-bold tracking-tight">
-          Hardware Setup Guide
+          Hardware Configuration & Pricing
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl">
-          Complete guide to assembling your ESPing SMS gateway hardware. 
-          Learn about component selection, wiring, and best practices for a reliable setup.
+          Complete guide to assembling your SMS Gateway hardware with detailed pricing in Algerian Dinars. 
+          Choose between a simple ESP32 configuration or an advanced configuration with Raspberry Pi.
         </p>
       </div>
 
-      {/* Overview */}
+      {/* Cost Overview */}
+      <section>
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-muted-foreground ">
+          <DollarSign className="w-6 h-6 text-green-600" />
+          Cost Overview
+        </h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {totalCosts.map((cost, index) => (
+            <Card key={index} className={`${index === 1 ? 'border-blue-500 shadow-lg' : ''}`}>
+              {index === 1 && (
+                <Badge className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-blue-500">
+                  Recommended
+                </Badge>
+              )}
+              <CardHeader className="text-center">
+                <CardTitle className="text-xl">{cost.setup}</CardTitle>
+                <CardDescription>{cost.description}</CardDescription>
+                <div className="mt-4">
+                  <span className="text-3xl font-bold text-green-600">{cost.totalDZD}</span>
+                  <div className="text-sm text-muted-foreground mt-1">
+                    + {cost.monthly} (monthly fees)
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold text-sm mb-2">Included components:</h4>
+                    <ul className="text-xs text-muted-foreground space-y-1">
+                      {cost.components.map((component, compIndex) => (
+                        <li key={compIndex}>• {component}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="pt-2 border-t">
+                    <p className="text-xs text-blue-600 font-medium">{cost.recommended}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* System Overview */}
       <Card className="p-6">
         <div className="flex items-center space-x-3 mb-4">
           <Cpu className="h-5 w-5 text-primary" />
           <h2 className="text-2xl font-bold">System Overview</h2>
         </div>
         <p className="text-muted-foreground mb-6">
-          ESPing consists of an ESP32 microcontroller connected to a GSM module, 
+          The SMS Gateway consists of an ESP32 microcontroller connected to a GSM module, 
           creating a bridge between WiFi and cellular networks for SMS communication.
         </p>
         <div className="grid gap-4 md:grid-cols-3">
@@ -178,7 +258,7 @@ export default function HardwarePage() {
 
       {/* Component List */}
       <section>
-        <h2 className="text-2xl font-bold mb-6">Required Components</h2>
+        <h2 className="text-2xl font-bold mb-6 text-muted-foreground">Required Components</h2>
         <div className="space-y-4">
           {components.map((component, index) => (
             <Card key={component.name} className="p-6">
@@ -196,13 +276,13 @@ export default function HardwarePage() {
                   <Badge variant={component.required ? 'default' : 'secondary'}>
                     {component.required ? 'Required' : 'Optional'}
                   </Badge>
-                  <div className="text-sm font-semibold text-primary mt-1">{component.price}</div>
+                  <div className="text-sm font-semibold text-green-600 mt-1">{component.price}</div>
                 </div>
               </div>
               
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <h4 className="font-medium mb-2">Options:</h4>
+                  <h4 className="font-medium mb-2">Available options:</h4>
                   <ul className="text-sm text-muted-foreground space-y-1">
                     {component.options.map((option, optionIndex) => (
                       <li key={optionIndex}>• {option}</li>
@@ -210,8 +290,18 @@ export default function HardwarePage() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-medium mb-2">Notes:</h4>
+                  <h4 className="font-medium mb-2">Important notes:</h4>
                   <p className="text-sm text-muted-foreground">{component.notes}</p>
+                  {component.specifications && (
+                    <div className="mt-2">
+                      <h5 className="font-medium text-xs mb-1">Specifications:</h5>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        {component.specifications.map((spec, specIndex) => (
+                          <li key={specIndex}>• {spec}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
             </Card>
@@ -221,7 +311,7 @@ export default function HardwarePage() {
 
       {/* Wiring Diagram */}
       <section>
-        <h2 className="text-2xl font-bold mb-6">Wiring Connections</h2>
+        <h2 className="text-2xl font-bold mb-6 text-muted-foreground">Wiring Diagram</h2>
         <Card className="p-6">
           <div className="flex items-center space-x-3 mb-6">
             <Cable className="h-5 w-5 text-primary" />
@@ -267,19 +357,19 @@ export default function HardwarePage() {
 
       {/* Assembly Instructions */}
       <section>
-        <h2 className="text-2xl font-bold mb-6">Step-by-Step Assembly</h2>
+        <h2 className="text-2xl font-bold mb-6">Assembly Instructions</h2>
         <div className="space-y-6">
           {[
             {
               step: 1,
-              title: 'Prepare Components',
-              content: 'Gather all components and tools. Ensure your workspace is clean and well-lit. Check that all components are working before assembly.',
+              title: 'Component Preparation',
+              content: 'Gather all components and tools. Ensure your workspace is clean and well-lit. Verify that all components are working before assembly.',
               icon: Settings
             },
             {
               step: 2,
-              title: 'Insert SIM Card',
-              content: 'Carefully insert the SIM card into the GSM module. Make sure it\'s properly seated and the contacts are clean.',
+              title: 'SIM Card Insertion',
+              content: 'Carefully insert the SIM card into the GSM module. Make sure it is properly seated and the contacts are clean.',
               icon: Radio
             },
             {
@@ -291,19 +381,19 @@ export default function HardwarePage() {
             {
               step: 4,
               title: 'Serial Communication',
-              content: 'Connect the TX/RX pins for serial communication. Note that ESP32 RX connects to GSM TX and vice versa.',
+              content: 'Connect the TX/RX pins for serial communication. Note that RX of ESP32 connects to TX of GSM and vice versa.',
               icon: Cable
             },
             {
               step: 5,
               title: 'Optional Components',
-              content: 'If using an OLED display or other optional components, connect them according to the wiring diagram.',
+              content: 'If using OLED display or other optional components, connect them according to the wiring diagram.',
               icon: Cpu
             },
             {
               step: 6,
-              title: 'Test Connections',
-              content: 'Double-check all connections before powering on. Use a multimeter to verify continuity if needed.',
+              title: 'Connection Testing',
+              content: 'Check all connections before powering on. Use a multimeter to verify continuity if necessary.',
               icon: CheckCircle
             }
           ].map((instruction, index) => (
@@ -327,7 +417,7 @@ export default function HardwarePage() {
 
       {/* Important Notes */}
       <section>
-        <h2 className="text-2xl font-bold mb-6">Important Considerations</h2>
+        <h2 className="text-2xl font-bold mb-6 text-muted-foreground">Important Considerations</h2>
         <div className="grid gap-6 md:grid-cols-2">
           <Card className="p-6 border-amber-500/20 bg-amber-500/5">
             <div className="flex items-start space-x-3">
@@ -336,9 +426,9 @@ export default function HardwarePage() {
                 <h3 className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Power Requirements</h3>
                 <ul className="text-sm text-amber-600 dark:text-amber-400 space-y-1">
                   <li>• GSM modules require high current (up to 2A during transmission)</li>
-                  <li>• Use a stable 5V power supply, not just USB power</li>
-                  <li>• Add capacitors for power smoothing if experiencing resets</li>
-                  <li>• Battery backup recommended for critical applications</li>
+                  <li>• Use stable 5V power supply, not just USB power</li>
+                  <li>• Add capacitors to smooth power if experiencing restarts</li>
+                  <li>• Backup battery recommended for critical applications</li>
                 </ul>
               </div>
             </div>
@@ -351,7 +441,7 @@ export default function HardwarePage() {
                 <h3 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">Signal Quality</h3>
                 <ul className="text-sm text-blue-600 dark:text-blue-400 space-y-1">
                   <li>• Position antenna away from ESP32 to avoid interference</li>
-                  <li>• Test signal strength in your intended location</li>
+                  <li>• Test signal strength at your intended location</li>
                   <li>• Use external antenna for better range if needed</li>
                   <li>• Avoid metal enclosures that block cellular signals</li>
                 </ul>
@@ -361,63 +451,9 @@ export default function HardwarePage() {
         </div>
       </section>
 
-      {/* Troubleshooting */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6">Common Issues</h2>
-        <div className="space-y-4">
-          {[
-            {
-              problem: "GSM module doesn't respond",
-              solutions: ["Check power connections and voltage", "Verify TX/RX wiring", "Ensure SIM card is properly inserted", "Check baud rate configuration"]
-            },
-            {
-              problem: "Poor signal quality",
-              solutions: ["Reposition antenna", "Move to area with better coverage", "Use external antenna", "Check carrier frequency bands"]
-            },
-            {
-              problem: "ESP32 keeps resetting",
-              solutions: ["Use adequate power supply", "Add power filtering capacitors", "Check for loose connections", "Reduce GSM transmission power"]
-            },
-            {
-              problem: "Can't send SMS",
-              solutions: ["Verify SIM card has credit", "Check APN settings", "Ensure network registration", "Test with AT commands first"]
-            }
-          ].map((issue, index) => (
-            <Card key={index} className="p-6">
-              <h3 className="font-semibold mb-3 text-red-600 dark:text-red-400">
-                {issue.problem}
-              </h3>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                {issue.solutions.map((solution, solutionIndex) => (
-                  <li key={solutionIndex}>• {solution}</li>
-                ))}
-              </ul>
-            </Card>
-          ))}
-        </div>
-      </section>
+      
 
-      {/* Next Steps */}
-      <Card className="p-8 text-center">
-        <h2 className="text-2xl font-bold mb-4">Hardware Setup Complete!</h2>
-        <p className="text-muted-foreground mb-6">
-          Once your hardware is assembled and tested, you're ready to flash the firmware and configure your ESPing device.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="glow" asChild>
-            <Link href="/docs/getting-started">
-              <Download className="mr-2 h-4 w-4" />
-              Flash Firmware
-            </Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link href="/docs/troubleshooting">
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Troubleshooting Guide
-            </Link>
-          </Button>
-        </div>
-      </Card>
+      
     </div>
   )
 }
