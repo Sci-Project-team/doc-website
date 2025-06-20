@@ -73,22 +73,13 @@ export default function MobileApp() {
                   <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-green-500"></Badge>
                   Send SMS messages individually or in bulk
                 </li>
-                <li className="flex items-center gap-2">
-                  <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-green-500"></Badge>
-                  View inbox and sent messages
-                </li>
+                
                 <li className="flex items-center gap-2">
                   <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-green-500"></Badge>
                   Real-time delivery status tracking
                 </li>
-                <li className="flex items-center gap-2">
-                  <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-green-500"></Badge>
-                  Contact management and groups
-                </li>
-                <li className="flex items-center gap-2">
-                  <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-green-500"></Badge>
-                  SMS templates and quick replies
-                </li>
+                
+                
               </ul>
             </div>
             
@@ -99,22 +90,10 @@ export default function MobileApp() {
                   <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-blue-500"></Badge>
                   GSM module status monitoring
                 </li>
-                <li className="flex items-center gap-2">
-                  <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-blue-500"></Badge>
-                  Network signal strength indicator
-                </li>
-                <li className="flex items-center gap-2">
-                  <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-blue-500"></Badge>
-                  SMS statistics and analytics
-                </li>
-                <li className="flex items-center gap-2">
-                  <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-blue-500"></Badge>
-                  API usage monitoring
-                </li>
-                <li className="flex items-center gap-2">
-                  <Badge variant="outline" className="w-2 h-2 p-0 rounded-full bg-blue-500"></Badge>
-                  Push notifications for important events
-                </li>
+                
+                
+                
+                
               </ul>
             </div>
           </div>

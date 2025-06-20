@@ -26,15 +26,18 @@ const endpoints = [
       { name: 'priority', type: 'number', description: 'Message priority (optional)' }
     ]
   },
-  {
-    method: 'GET',
-    endpoint: '/api/sms/inbox',
-    description: 'Retrieve all received SMS messages',
-    parameters: [
-      { name: 'limit', type: 'number', description: 'Number of messages to return' },
-      { name: 'offset', type: 'number', description: 'Pagination offset' }
-    ]
-  }
+{
+  method: 'GET',
+  endpoint: '/api/logs',
+  description: 'Retrieve history and status of all sent SMS messages',
+  parameters: [
+    { name: 'limit', type: 'integer', description: 'Maximum number of logs to return (default: 100)' },
+    { name: 'level', type: 'string', description: 'Filter by log level (INFO, WARNING, ERROR)' },
+    { name: 'component', type: 'string', description: 'Filter by component' }
+  ]
+}
+
+
 ]
 
 const languages = [
@@ -202,7 +205,7 @@ export function ApiDocs() {
                 Launch Demo
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="https://github.com/esping/esping">
+                <Link href="https://github.com/Sci-Project-team">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Open Source
                 </Link>

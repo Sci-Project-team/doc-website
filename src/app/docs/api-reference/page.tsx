@@ -151,50 +151,7 @@ const endpoints = [
       }
     ]
   },
-  {
-    method: 'GET',
-    path: '/sms/inbox',
-    title: 'List Received SMS',
-    description: 'Get all received SMS messages',
-    auth: true,
-    category: 'SMS Operations',
-    icon: Inbox,
-    parameters: [],
-    responses: [
-      { 
-        status: 200, 
-        description: 'List of received SMS messages',
-        example: {
-          "messages": [
-            {
-              "id": "msg_in_123",
-              "from": "+213666789012",
-              "message": "Reply: Thank you for your message!",
-              "received_at": "2025-06-20T14:25:00Z",
-              "status": "received"
-            },
-            {
-              "id": "msg_in_124",
-              "from": "+213777890123",
-              "message": "STOP",
-              "received_at": "2025-06-20T14:20:00Z",
-              "status": "received"
-            }
-          ],
-          "total": 2,
-          "page": 1
-        }
-      },
-      { 
-        status: 401, 
-        description: 'Authentication required',
-        example: {
-          "error": "Unauthorized",
-          "message": "Access token is required"
-        }
-      }
-    ]
-  },
+
   {
     method: 'GET',
     path: '/sms/sent',
@@ -288,109 +245,8 @@ const endpoints = [
         }
       }
     ]
-  },
-  {
-    method: 'GET',
-    path: '/admin/users',
-    title: 'List Users (Admin)',
-    description: 'Get list of all users (admin only)',
-    auth: true,
-    category: 'Admin',
-    icon: Users,
-    parameters: [],
-    responses: [
-      { 
-        status: 200, 
-        description: 'List of users',
-        example: {
-          "users": [
-            {
-              "id": 12345,
-              "username": "johndoe",
-              "email": "john@example.com",
-              "full_name": "John Doe",
-              "created_at": "2025-06-15T10:00:00Z",
-              "last_login": "2025-06-20T14:30:00Z",
-              "is_active": true,
-              "messages_sent": 25
-            },
-            {
-              "id": 12346,
-              "username": "janedoe",
-              "email": "jane@example.com",
-              "full_name": "Jane Doe",
-              "created_at": "2025-06-16T11:00:00Z",
-              "last_login": "2025-06-19T16:20:00Z",
-              "is_active": true,
-              "messages_sent": 12
-            }
-          ],
-          "total": 2,
-          "page": 1
-        }
-      },
-      { 
-        status: 403, 
-        description: 'Admin access required',
-        example: {
-          "error": "Forbidden",
-          "message": "Admin privileges required to access this resource"
-        }
-      }
-    ]
-  },
-  {
-    method: 'GET',
-    path: '/admin/messages',
-    title: 'List Messages (Admin)',
-    description: 'Get list of all messages (admin only)',
-    auth: true,
-    category: 'Admin',
-    icon: Shield,
-    parameters: [],
-    responses: [
-      { 
-        status: 200, 
-        description: 'List of messages',
-        example: {
-          "messages": [
-            {
-              "id": "msg_67890",
-              "user_id": 12345,
-              "username": "johndoe",
-              "type": "outbound",
-              "phone_number": "+213555123456",
-              "message": "Hello! This is a test SMS from our API.",
-              "timestamp": "2025-06-20T14:30:00Z",
-              "status": "delivered",
-              "cost": 0.05
-            },
-            {
-              "id": "msg_in_123",
-              "user_id": 12345,
-              "username": "johndoe",
-              "type": "inbound",
-              "phone_number": "+213666789012",
-              "message": "Reply: Thank you for your message!",
-              "timestamp": "2025-06-20T14:25:00Z",
-              "status": "received",
-              "cost": 0.00
-            }
-          ],
-          "total": 2,
-          "page": 1
-        }
-      },
-      { 
-        status: 403, 
-        description: 'Admin access required',
-        example: {
-          "error": "Forbidden",
-          "message": "Admin privileges required to access this resource"
-        }
-      }
-    ]
   }
+  
 ]
 
 // Group endpoints by category

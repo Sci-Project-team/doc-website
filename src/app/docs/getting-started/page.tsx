@@ -153,7 +153,6 @@ const requirements = [
     category: 'Software',
     items: [
       'Python 3.6+ with pip installed',
-      'esptool.py for firmware flashing',
       'Serial terminal (optional, for debugging)',
       'Web browser for configuration',
       'curl or Postman for API testing'

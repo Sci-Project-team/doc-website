@@ -224,10 +224,7 @@ function send_sms_notification($phone, $message) {
             </pre>
           </div>
           
-          <Button variant="outline">
-            <Download className="w-4 h-4 mr-2" />
-            Download Plugin
-          </Button>
+          
         </CardContent>
       </Card>
     </div>

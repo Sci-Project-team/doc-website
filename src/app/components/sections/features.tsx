@@ -48,29 +48,13 @@ const features = [
     description: 'Built-in SQLite database for message persistence, logging, and offline capability.',
     benefits: ['Message persistence', 'Delivery tracking', 'Offline queuing', 'Data analytics']
   },
-  {
-    icon: Radio,
-    title: 'Multi-Network Support',
-    description: 'Compatible with 2G/3G/4G networks worldwide with automatic failover and optimization.',
-    benefits: ['Auto APN detection', 'Network failover', 'Signal monitoring', 'Carrier optimization']
-  },
-  {
-    icon: Globe,
-    title: 'Web Management Portal',
-    description: 'Comprehensive web interface for monitoring, configuration, and real-time analytics.',
-    benefits: ['Real-time dashboard', 'Message analytics', 'System monitoring', 'Remote configuration']
-  },
+  
+  
   {
     icon: Code,
     title: 'Developer Ecosystem',
     description: 'Complete SDK suite with libraries for Python, JavaScript, PHP, and integration plugins.',
     benefits: ['Python SDK', 'JavaScript library', 'WordPress, Node-red, Zapier plugin', 'REST API docs']
-  },
-  {
-    icon: Webhook,
-    title: 'Webhook Integration',
-    description: 'Real-time event notifications with configurable webhook endpoints and retry logic.',
-    benefits: ['Delivery notifications', 'System events', 'Custom triggers', 'Retry mechanism']
   }
 ]
 

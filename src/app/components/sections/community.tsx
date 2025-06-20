@@ -52,27 +52,27 @@ const communityResources = [
 const contributors = [
   {
     name: 'Djabri Maroua',
-    role: 'Project Manager',
+   
   },
   {
     name: 'Dinari Yasmine',
-    role: 'Frontend Developer',
+    
   },
   {
     name: 'Bouyahiyaoui Meriem',
-    role: 'Backend Developer',
+    
   },
   {
     name: 'Rezzoug Aicha',
-    role: 'Hardware Specialist',
+   
   },
   {
     name: 'Messikh Wissal',
-    role: 'Documentation Lead',
+    
   },
   {
     name: 'Amirat Thanina',
-    role: 'Project Manager',
+ 
   },
 
 ]
@@ -192,9 +192,7 @@ export function Community() {
         <h4 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
           {contributor.name}
         </h4>
-        <Badge variant="outline" className="group-hover:border-primary/50 transition-colors">
-          {contributor.role}
-        </Badge>
+        
       </div>
     </Card>
   ))}
