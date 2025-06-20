@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Github, Twitter, Mail, Heart, Zap, MessageSquare } from 'lucide-react'
+import { Github, Twitter, Mail, Heart, MessageSquare } from 'lucide-react'
 import { Button } from './button'
 
 const footerLinks = {
@@ -11,15 +11,13 @@ const footerLinks = {
   ],
   resources: [
     { name: 'Getting Started', href: '/docs/getting-started' },
-    { name: 'Examples', href: '/docs/examples' },
-    { name: 'Tutorials', href: '/docs/tutorials' },
-    { name: 'FAQ', href: '/docs/faq' },
+    { name: 'Mobile App', href: '/docs/mobile-app' },
+    { name: 'SDKs', href: '/docs/sdk' },
+    { name: 'Integrations', href: '/docs/integrations' },
   ],
   community: [
-    { name: 'GitHub', href: 'https://github.com/esping/esping' },
+    { name: 'GitHub', href: 'https://github.com/Sci-Project-team' },
     { name: 'Discord', href: 'https://discord.gg/esping' },
-    { name: 'Forum', href: '/community' },
-    { name: 'Contributions', href: '/community/contribute' },
   ],
   company: [
     { name: 'About', href: '/about' },
@@ -32,7 +30,7 @@ const footerLinks = {
 const socialLinks = [
   {
     name: 'GitHub',
-    href: 'https://github.com/esping/esping',
+    href: 'https://github.com/Sci-Project-team',
     icon: Github,
   },
   {
@@ -135,7 +133,7 @@ export function Footer() {
           <div className="flex items-center space-x-1 text-sm text-muted-foreground mb-4 md:mb-0">
             <span>Made with</span>
             <Heart className="w-4 h-4 text-red-500" />
-            <span>by the ESPing community</span>
+            <span>by the ESPing team</span>
           </div>
           <div className="flex items-center space-x-6 text-sm text-muted-foreground">
             <Link href="/privacy" className="hover:text-foreground transition-colors">
