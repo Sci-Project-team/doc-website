@@ -30,7 +30,7 @@ const communityResources = [
     title: 'GitHub Repository',
     description: 'Contribute to the codebase, report issues, and collaborate with other developers',
     icon: Github,
-    href: 'https://github.com/esping/esping',
+    href: 'https://github.com/Sci-Project-team',
     stats: '2.3k stars',
   },
   {
@@ -214,7 +214,7 @@ export function Community() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <Link href="https://github.com/esping/esping">
+                <Link href="https://github.com/Sci-Project-team">
                   <Github className="mr-2 h-4 w-4" />
                   View on GitHub
                 </Link>
