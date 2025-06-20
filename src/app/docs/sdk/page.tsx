@@ -21,7 +21,7 @@ export default function SDK() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-4xl font-bold tracking-tight">SDK Documentation</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-muted-foreground">SDK Documentation</h1>
         <p className="text-xl text-muted-foreground mt-2">
           Official SDKs for Python and JavaScript to integrate ESPing SMS Gateway easily into your applications
         </p>

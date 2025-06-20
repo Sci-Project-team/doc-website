@@ -20,7 +20,7 @@ export default function MobileApp() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-4xl font-bold tracking-tight">ESPing Mobile Application</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-muted-foreground">ESPing Mobile Application</h1>
         <p className="text-xl text-muted-foreground mt-2">
           Native Android SMS Gateway management with adaptive backend support
         </p>
