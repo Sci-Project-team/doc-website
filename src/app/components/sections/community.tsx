@@ -106,26 +106,7 @@ const contributionWays = [
   },
 ]
 
-const upcomingEvents = [
-  {
-    title: 'ESPing Hackathon 2025',
-    date: 'March 15-17, 2025',
-    location: 'Virtual Event',
-    description: 'Build innovative SMS-powered IoT projects and win prizes',
-  },
-  {
-    title: 'Community Meetup',
-    date: 'February 28, 2025',
-    location: 'San Francisco, CA',
-    description: 'Monthly meetup for ESPing developers and enthusiasts',
-  },
-  {
-    title: 'Workshop: Advanced ESP32',
-    date: 'March 5, 2025',
-    location: 'Online',
-    description: 'Deep dive into ESP32 programming and SMS integration',
-  },
-]
+
 
 export function Community() {
   return (

@@ -357,7 +357,7 @@ export default function HardwarePage() {
 
       {/* Assembly Instructions */}
       <section>
-        <h2 className="text-2xl font-bold mb-6">Assembly Instructions</h2>
+        <h2 className="text-2xl font-bold mb-6 text-muted-foreground">Assembly Instructions</h2>
         <div className="space-y-6">
           {[
             {

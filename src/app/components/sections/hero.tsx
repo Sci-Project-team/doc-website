@@ -3,6 +3,13 @@
 import { useState } from 'react'
 import { Button } from '../ui/button'
 import { Card } from '../ui/card'
+import image1 from '../../../../public/image1.jpg'
+import image2 from '../../../../public/image2.jpg'
+import image3 from '../../../../public/image3.jpg'
+import image4 from '../../../../public/image4.jpg'
+import image5 from '../../../../public/image5.jpg'
+import image6 from '../../../../public/image6.jpg'
+import Image from 'next/image'
 import {
   Zap,
   Wifi,
@@ -20,6 +27,34 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
+const contributorImages = [image1, image2, image3, image4, image5, image6]
+const contributors = [
+  {
+    name: 'Djabri Maroua',
+   
+  },
+  {
+    name: 'Dinari Yasmine',
+    
+  },
+  {
+    name: 'Bouyahiyaoui Meriem',
+    
+  },
+  {
+    name: 'Rezzoug Aicha',
+   
+  },
+  {
+    name: 'Messikh Wissal',
+    
+  },
+  {
+    name: 'Amirat Thanina',
+ 
+  },
+
+]
 const features = [
   {
     icon: Cpu,
@@ -161,6 +196,44 @@ export function Hero() {
                 <feature.icon className="w-8 h-8 text-primary mb-4" />
                 <h3 className="font-semibold mb-2 text-white">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground">{feature.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contributors Section */}
+      <section className="py-20 bg-background/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              Meet Our <span className="gradient-text">Contributors</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              The talented team behind ESPing SMS Gateway - passionate developers and engineers
+              dedicated to making IoT communication accessible to everyone.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {contributors.map((contributor, index) => (
+              <Card key={index} className="p-6 text-center hover-lift transition-all duration-300 group hover:shadow-lg hover:border-primary/30">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 mx-auto rounded-full overflow-hidden ring-4 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300">
+                    <Image
+                      src={contributorImages[index] || '/default-avatar.png'}
+                      alt={contributor.name}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
+                    {contributor.name}
+                  </h4>
+                </div>
               </Card>
             ))}
           </div>

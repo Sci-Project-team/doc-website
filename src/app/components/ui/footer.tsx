@@ -17,7 +17,7 @@ const footerLinks = {
   ],
   community: [
     { name: 'GitHub', href: 'https://github.com/Sci-Project-team' },
-    { name: 'Discord', href: 'https://discord.gg/esping' },
+   
   ],
   company: [
     { name: 'About', href: '/about' },

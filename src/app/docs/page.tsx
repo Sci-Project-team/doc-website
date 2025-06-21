@@ -81,7 +81,7 @@ export default function DocsPage() {
     <div className="space-y-12">
       {/* Header */}
       <div className="space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight">
+        <h1 className="text-4xl font-bold tracking-tight text-muted-foreground">
           ESPing Documentation
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl">
@@ -94,7 +94,7 @@ export default function DocsPage() {
       <section>
         <div className="flex items-center space-x-2 mb-6">
           <Lightbulb className="h-5 w-5 text-primary" />
-          <h2 className="text-2xl font-bold">Quick Start</h2>
+          <h2 className="text-2xl font-bold text-muted-foreground">Quick Start</h2>
         </div>
         <p className="text-muted-foreground mb-8">
           Get your ESPing SMS gateway up and running in under 30 minutes with our step-by-step guides.
@@ -132,93 +132,7 @@ export default function DocsPage() {
         </div>
       </section>
 
-      {/* What You'll Learn */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6">What You'll Learn</h2>
-        <div className="grid gap-8 md:grid-cols-2">
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3 flex items-center">
-                <Wrench className="mr-2 h-5 w-5 text-primary" />
-                Hardware & Setup
-              </h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• ESP32 and GSM module wiring</li>
-                <li>• Power supply requirements</li>
-                <li>• Antenna configuration</li>
-                <li>• Firmware flashing process</li>
-                <li>• Initial device configuration</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-3 flex items-center">
-                <Settings className="mr-2 h-5 w-5 text-primary" />
-                Configuration
-              </h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• WiFi network setup</li>
-                <li>• SIM card configuration</li>
-                <li>• API key generation</li>
-                <li>• Security settings</li>
-                <li>• Monitoring and alerts</li>
-              </ul>
-            </div>
-          </div>
 
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3 flex items-center">
-                <Code className="mr-2 h-5 w-5 text-primary" />
-                Development
-              </h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• REST API integration</li>
-                <li>• SDK usage examples</li>
-                <li>• Webhook implementation</li>
-                <li>• Error handling patterns</li>
-                <li>• Rate limiting strategies</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-3 flex items-center">
-                <MessageSquare className="mr-2 h-5 w-5 text-primary" />
-                Use Cases
-              </h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Home automation alerts</li>
-                <li>• IoT device notifications</li>
-                <li>• Security system integration</li>
-                <li>• Remote monitoring setup</li>
-                <li>• Emergency communication</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Topics */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6">Popular Topics</h2>
-        <div className="space-y-4">
-          {popularTopics.map((topic, index) => (
-            <Card key={topic.title} className="p-6 hover-lift group">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="font-semibold mb-2">{topic.title}</h3>
-                  <p className="text-sm text-muted-foreground">{topic.description}</p>
-                </div>
-                <Button variant="ghost" size="sm" asChild>
-                  <Link href={topic.href}>
-                    <ExternalLink className="h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </section>
 
       {/* API Example */}
       <section>
@@ -236,11 +150,7 @@ export default function DocsPage() {
                     View API Docs
                   </Link>
                 </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/docs/examples">
-                    See Examples
-                  </Link>
-                </Button>
+              
               </div>
             </div>
             
@@ -260,25 +170,7 @@ export default function DocsPage() {
         </Card>
       </section>
 
-      {/* Footer */}
-      <section className="text-center py-8 border-t">
-        <h3 className="text-lg font-semibold mb-4">Need more help?</h3>
-        <p className="text-muted-foreground mb-6">
-          Our community is here to help you succeed with ESPing.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="outline" asChild>
-            <Link href="/community">
-              Join Community
-            </Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link href="https://github.com/esping/esping/issues" target="_blank">
-              Report Issue
-            </Link>
-          </Button>
-        </div>
-      </section>
+
     </div>
   )
 }

@@ -25,11 +25,7 @@ const navigation = [
     href: '/features',
     icon: Code,
   },
-  {
-    name: 'Community',
-    href: '/community',
-    icon: Users,
-  },
+
 ]
 
 export function Navbar() {
@@ -46,7 +42,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-14">
             {navigation.map((item) => (
               <Link
                 key={item.name}
